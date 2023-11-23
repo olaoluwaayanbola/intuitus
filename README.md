@@ -1,0 +1,2 @@
+# intuitus
+data visualization app
