@@ -1,9 +1,15 @@
-.main_container {
+/* App.scss */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .main_container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
   }
   
   .header-container {
@@ -11,8 +17,27 @@
     margin-bottom: 20px;
   }
   
+  #fileInput {
+    display: none;
+  }
+  
+  .file-upload-label {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .file-upload-label:hover {
+    background-color: #45a049;
+  }
+  
   .file-name {
     margin-left: 10px;
+    font-weight: bold;
   }
   
   .nav-container {
@@ -21,33 +46,45 @@
     margin-bottom: 20px;
   }
   
-  .chart-btn {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition-duration: 0.4s;
-  }
-  
-  .chart-btn.active {
-    background-color: #008cba;
-  }
-  
-  .chart {
-    width: 80%;
-    height: 300px;
+  .visualTypes {
+    background-color: #ddd;
     border: 1px solid #ccc;
-    margin: 0 auto;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .visualTypes:hover {
+    background-color: #bfbfbf;
+  }
+  
+  .visualTypes h3 {
+    margin: 0;
+  }
+  
+  .visualTypes.active {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 300px;
+    width: 80%;
+    border: 1px solid #ccc;
+    margin: 0 auto;
     font-size: 24px;
+  }
+  
+  .footer-container {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
   }
   

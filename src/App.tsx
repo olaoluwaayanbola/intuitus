@@ -18,6 +18,12 @@ function App() {
     <div className="main_container">
       <h1>Data Visualization App</h1>
       <header className="header-container">
+        <label htmlFor="fileInput" className="file-upload-label">
+          Upload File
+        </label>
+        <span className="file-name">
+          {selectedFile && selectedFile.name}
+        </span>
         <input
           type="file"
           id="fileInput"
@@ -39,7 +45,9 @@ function App() {
       <main className="main-container">
         {chartType && <div className="chart">{chartType}</div>}
       </main>
-      <footer className="footer-container"></footer>
+      <footer className="footer-container">
+        &copy; {new Date().getFullYear()} Data Visualization App
+      </footer>
     </div>
   );
 }
