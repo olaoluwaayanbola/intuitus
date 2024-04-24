@@ -25,14 +25,12 @@ function App() {
           reader.onload = async (event) => {
             const binaryString = event.target?.result as string;
             const workbook = XLSX.read(binaryString, { type: "binary" });
-            const sheetName = workbook.SheetNames[0]; // Assuming first sheet
+            const sheetName = workbook.SheetNames[0]; 
             const worksheet = workbook.Sheets[sheetName];
             const rows: Row[] = XLSX.utils.sheet_to_json<Row>(worksheet, { header: 1 });
+            const processedData = processExcelData(rows);
 
-            // Process the data (e.g., transpose if needed)
-            const processedData = processExcelData(rows); // Replace with your logic
-
-            setData(processedData); // Update data state with processed data
+            setData(processedData); 
           };
           reader.readAsBinaryString(file);
         } catch (error) {
@@ -57,12 +55,12 @@ function App() {
     return colors[index % colors.length];
   };
 
-  const handleChartTypeChange = (type: string) => {
-    setChartType(type);
-  };
+  // const handleChartTypeChange = (type: string) => {
+  //   setChartType(type);
+  // };
 
   interface Row {
-    [key: string]: any; // Dynamic property names for header row
+    [key: string]: any;
   }
 
   const processExcelData = (rows: any[]) => {
@@ -94,7 +92,7 @@ function App() {
         return null;
     }
   };
-
+  console.log(data.datasets)
   return (
     <div className="main_container">
       <h1>Data Visualization App</h1>
