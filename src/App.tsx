@@ -63,20 +63,26 @@ function App() {
     [key: string]: any;
   }
 
-  const processExcelData = (rows: any[]) => {
-    // Implement your logic to process Excel data (e.g., transpose, handle headers)
-    // This example assumes data rows and returns it as is
-    return {
-      labels: ["January", "February", "March", "April", "May", "June", "July"], // Replace with actual labels from your data
-      datasets: rows.map((row: any) => ({
-        label: "Data", // Replace with actual label
-        data: Object.values(row), // Assuming data is in each row object
-        backgroundColor: getBackgroundColor(rows.indexOf(row)), // Pass index for color variation
-        borderColor: getBackgroundColor(rows.indexOf(row)),
-        borderWidth: 1,
-      })),
-    };
+const processExcelData = (rows: any[]) => {
+  const headerRow = rows[0];
+  const headerKeys = Object.keys(headerRow);
+  const header = headerKeys.slice(0, -1);
+
+
+  const datasets = rows.slice(1).map((row: any) => ({
+    label: row[headerKeys[headerKeys.length - 1]], 
+    data: Object.values(row).slice(0, -1), 
+    backgroundColor: getBackgroundColor(rows.indexOf(row)),
+    borderColor: getBackgroundColor(rows.indexOf(row)),
+    borderWidth: 1,
+  }));
+
+  return {
+    labels: header,
+    datasets: datasets,
   };
+};
+
 
   const renderChart = () => {
     switch (chartType) {
